@@ -1,9 +1,11 @@
 import { createClient } from '@/utils/supabase/server';
 import { ArrowUpRight } from 'lucide-react';
 
-export default async function ProjectLinks() {
+
+
+export default async function ProjectLinks({ databaseName }: { databaseName: string }) {
   const supabase = await createClient();
-  const { data: projects } = await supabase.from("projects").select();
+  const { data: projects } = await supabase.from(databaseName).select();
   const formattedProjects = (projects || []).map(project => ({
     text: project['Link Name'],
     href: project['Link URL'] 
@@ -13,7 +15,7 @@ export default async function ProjectLinks() {
       
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 md:pt-32">
         <ul className="space-y-4">
-          {(formattedProjects || []).map((link, index) => (
+          {(formattedProjects || []).reverse().map((link, index) => (
             <li key={index}>
               <a 
                 href={link.href} 

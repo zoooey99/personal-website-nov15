@@ -6,7 +6,8 @@ export default function Component() {
   return (
     <div className="min-h-screen bg-white">
       <NameHeader/>
-      <ProjectLinks/>
+      <ProjectLinks databaseName={'projects'}/>
+      <ProjectLinks databaseName={'playground'}/>
     </div>
   )
 }
