@@ -7,8 +7,8 @@ export default async function ProjectLinks({ databaseName }: { databaseName: str
   const supabase = await createClient();
   const { data: projects } = await supabase.from(databaseName).select();
   const formattedProjects = (projects || []).map(project => ({
-    text: project['Link Name'],
-    href: project['Link URL'] 
+    text: project['link_name'],
+    href: project['link_url'] 
   }));
 
   return (
