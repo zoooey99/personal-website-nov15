@@ -3,7 +3,7 @@ import { ArrowUpRight } from 'lucide-react';
 
 
 
-export default async function ProjectLinks({ databaseName }: { databaseName: string }) {
+export default async function ProjectLinks({ databaseName, title }: { databaseName: string, title: string }) {
   const supabase = await createClient();
   const { data: projects } = await supabase.from(databaseName).select();
   const formattedProjects = (projects || []).map(project => ({
@@ -14,6 +14,7 @@ export default async function ProjectLinks({ databaseName }: { databaseName: str
   return (
       
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 md:pt-32">
+        <h2 className="text-3xl font-bold text-foreground mb-6 block text-black">{title}</h2>
         <ul className="space-y-4">
           {(formattedProjects || []).reverse().map((link, index) => (
             <li key={index}>
