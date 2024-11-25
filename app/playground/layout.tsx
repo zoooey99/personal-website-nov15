@@ -1,4 +1,4 @@
-import PlaygroundBackButton from "@/app/playground/playground-back-button";
+import PlaygroundBackButton from "@/components/playground-back-button";
 import { ArrowLeft, ArrowLeftCircle,ArrowLeftIcon,ArrowLeftFromLine, ArrowLeftFromLineIcon } from 'lucide-react';
 
 export default async function Layout({
